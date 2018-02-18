@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<script>
+		var amount = 0;
+		function deposit(){
+		document.getElementById('dep').style.display='block';
+		document.getElementById('with').style.display='none';
+		document.getElementById('balance').style.display='none';
+	}
+		function withdrawal(){
+		document.getElementById('dep').style.display='none';
+		document.getElementById('with').style.display='block';
+		document.getElementById('balance').style.display='none';
+	}
+		function showbalance(){
+		document.getElementById('dep').style.display='none';
+		document.getElementById('with').style.display='none';
+		document.getElementById('balance').style.display='block';
+		document.getElementById('balance').innerHTML="your balance is" +amount;
+	}
+	    function depositinput(){
+	    document.getElementById('balance').style.display="block";
+	    var damount=parseInt(document.getElementById('number').value);
+	    amount = amount + damount;
+	    document.getElementById('balance').innerHTML="amount=" +amount;
+	}
+		function withdrawalinput(){
+	    console.log(amount);
+		document.getElementById('balance').style.display="block";
+	    var wamount=parseInt(document.getElementById('number02').value);
+	    if (wamount > amount){
+	    	document.getElementById('balance').innerHTML="insufficient balance";
+	    }
+	    else{
+	    amount = amount - wamount;
+	    document.getElementById('balance').innerHTML="amount=" +amount;
+	}
+
+	}
+	</script>
+</head>
+		<body> 
+		<button id="deposit" onclick="deposit()">deposit</button>
+		<button id="withdrawal" onclick="withdrawal()">withdrawal</button>
+		<button id="showbalance" onclick="showbalance()">showbalance</button>
+	<div id="dep" style="display:none";>
+		<input type="number" id="number">
+	    <input type="button" value="submit" onclick="depositinput()">
+	</div>
+	<div id="with" style="display:none";>
+		<input type="number" id="number02">
+		<input type="button" value="submit" onclick="withdrawalinput()">
+	</div>
+	<p id="balance" style="display:none";>balance is</p>
+	</body>
+	</html>
